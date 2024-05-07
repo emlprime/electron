@@ -48,7 +48,7 @@ const App: Component = () => {
         {games().map((game, i) => (
           <div>
             status: {game.status} attacker: {game.attacker} defender:{" "}
-            {game.defender}
+            {game.defender} adan was here
           </div>
         ))}
       </div>
