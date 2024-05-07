@@ -11,7 +11,6 @@ const app = initializeApp({
   projectId: "electron-2242",
   apiKey: "AIzaSyD4nAc4pPLsq4Pip_aWGNFflf_74BwXaY0",
   authDomain: "electron-2242.firebaseapp.com",
-  projectId: "electron-2242",
   storageBucket: "electron-2242.appspot.com",
   messagingSenderId: "488588053584",
   appId: "1:488588053584:web:0e328c8345f53c0a96d555",
