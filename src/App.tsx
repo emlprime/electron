@@ -1,4 +1,4 @@
-import type { Component, Match, Switch } from "solid-js";
+import { Component, Match, Switch } from "solid-js";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { collection, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
@@ -48,7 +48,7 @@ const App: Component = () => {
         {games().map((game, i) => (
           <div>
             status: {game.status} attacker: {game.attacker} defender:{" "}
-            {game.defender} adan was here
+            {game.defender} adan was here  - screw that adan guy, zak was here.
           </div>
         ))}
       </div>
