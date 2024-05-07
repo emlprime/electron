@@ -18,6 +18,7 @@ export const fetchGames = (app) => {
         gamesData.push(doc.data());
       });
       setGames(gamesData);
+      console.log(`gamesData:`, gamesData);
     } catch (error) {
       console.error("Error fetching games:", error);
     }

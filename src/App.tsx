@@ -1,7 +1,7 @@
 import type { Component, Match, Switch } from "solid-js";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { collection, getFirestore } from "firebase/firestore";
-
+import { initializeApp } from "firebase/app";
 import { useAuth, useFirebaseApp, useFirestore } from "solid-firebase";
 import { fetchGames } from "./fetchGames";
 import logo from "./logo.svg";
@@ -9,7 +9,6 @@ import styles from "./App.module.css";
 
 function Login() {
   const app = useFirebaseApp();
-
   const signIn = () => signInWithPopup(getAuth(app), new GoogleAuthProvider());
   return <button onClick={signIn}>Sign In with Google</button>;
 }
@@ -32,7 +31,6 @@ const App: Component = () => {
   const state = useAuth(getAuth(app));
 
   const { games, refreshGames } = fetchGames(app);
-  console.log("games", games());
   return (
     <section>
       <Switch fallback={<Login />}>
@@ -46,7 +44,14 @@ const App: Component = () => {
           User: <User data={state.data} />
         </Match>
       </Switch>
-      <div>{games.data}</div>
+      <div>
+        {games().map((game, i) => (
+          <div>
+            status: {game.status} attacker: {game.attacker} defender:{" "}
+            {game.defender}
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
