@@ -1,3 +1,5 @@
+import { Crown } from "./icons/Crown";
+
 export const Grid = () => {
   const gridSize = 9;
   const gridUnit = 900 / gridSize;
@@ -52,6 +54,7 @@ export const Grid = () => {
 
       {/* Rectangle in the bottom right corner */}
       <rect x="280" y="280" width="50" height="50" fill="blue" />
+      <Crown height="150" width="150" />
     </svg>
   );
 };
