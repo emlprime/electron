@@ -41,10 +41,10 @@ export const Grid = () => {
 
   return (
     <svg
-      width="100%"
-      height="100%"
+      width="80%"
+      height="80%"
       viewBox="0 0 900 900"
-      style="background-color: #222"
+      style="background-color: #DDD"
     >
       {/* Grid lines */}
       {gridLines}
