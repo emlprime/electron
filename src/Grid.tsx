@@ -52,7 +52,7 @@ export const Grid = () => {
       {/* Circle in the center */}
       <circle cx="450" cy="450" r="50" fill="red" />
       {/* Circle in the top right */}
-      <circle cx="50" cy="650" r="50" fill="black" />
+      <circle cx="650" cy="50" r="50" fill="black" />
 
       {/* Rectangle in the bottom right corner */}
       <rect x="280" y="280" width="50" height="50" fill="blue" />
