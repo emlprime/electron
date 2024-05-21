@@ -1,6 +1,16 @@
+import * as R from "ramda";
 import { Crown } from "./icons/Crown";
-import { Piece } from "./Piece"
-export const Grid = () => {
+import { Piece } from "./Piece";
+export const Grid = ({ boards = [] }) => {
+  const pieces = R.pipe(
+    R.head,
+    R.defaultTo({}),
+    R.propOr([], "Pieces"),
+    R.map(R.pick(["x", "y", "owner"])),
+    R.map(({ x, y, owner }) => ({ x: x * 100, y: y * 100, owner })),
+  )(boards);
+
+  console.log(`pieces:`, pieces);
   const gridSize = 9;
   const gridUnit = 900 / gridSize;
 
@@ -39,12 +49,6 @@ export const Grid = () => {
     );
   }
 
-const pieces = [
-{x:20,y:450},
-{x:250,y:350},
-{x:500,y:250},
-]
-
   return (
     <svg
       width="80%"
@@ -57,10 +61,8 @@ const pieces = [
 
       {/* Circle in the center */}
       <circle cx="450" cy="450" r="50" fill="red" />
-    
-      <For each={pieces}>{(piece, i)=>
-   <Piece x={piece.x} y={piece.y} />
-}</For>
+
+      <For each={pieces}>{(piece, i) => <Piece x={piece.x} y={piece.y} />}</For>
       {/* Rectangle in the bottom right corner */}
       <rect x="280" y="280" width="50" height="50" fill="blue" />
       <Crown height="150" width="150" />

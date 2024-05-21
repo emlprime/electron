@@ -1,12 +1,14 @@
+import * as R from "ramda";
 import { Component, Match, Switch } from "solid-js";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { collection, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { useAuth, useFirebaseApp, useFirestore } from "solid-firebase";
 import { fetchGames } from "./fetchGames";
+import { fetchBoards } from "./fetchBoard";
 import logo from "./logo.svg";
 import styles from "./App.module.css";
-import {Grid} from "./Grid"
+import { Grid } from "./Grid";
 
 function Login() {
   const app = useFirebaseApp();
@@ -32,6 +34,7 @@ const App: Component = () => {
   const state = useAuth(getAuth(app));
 
   const { games, refreshGames } = fetchGames(app);
+  const { boards, refreshBoards } = fetchBoards(app);
   return (
     <section>
       <Switch fallback={<Login />}>
@@ -52,8 +55,13 @@ const App: Component = () => {
             {game.defender}
           </div>
         ))}
+        {boards().map((board, i) => (
+          <div>
+            Board{i} {JSON.stringify(board, null, 2)}
+          </div>
+        ))}
       </div>
-      <Grid />
+      <Grid boards={boards()} />
     </section>
   );
 };

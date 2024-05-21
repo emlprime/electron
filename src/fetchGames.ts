@@ -14,11 +14,9 @@ export const fetchGames = (app) => {
       const querySnapshot = await getDocs(gamesCollectionRef);
       const gamesData = [];
       querySnapshot.forEach((doc) => {
-        console.log("doc", doc);
         gamesData.push(doc.data());
       });
       setGames(gamesData);
-      console.log(`gamesData:`, gamesData);
     } catch (error) {
       console.error("Error fetching games:", error);
     }
