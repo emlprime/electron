@@ -7,9 +7,9 @@ export const Grid = ({ boards = [] }) => {
     R.defaultTo({}),
     R.propOr([], "Pieces"),
     R.map(R.pick(["x", "y", "owner"])),
-    R.map(({ x, y, owner }) => ({ x: x * 90, y: y * 100, owner })),
+    R.map(({ x, y, owner }) => ({ x: x * 100, y: y * 100, owner })),
   )(boards);
-
+  console.log("pieces", pieces);
   const gridSize = 9;
   const gridUnit = 900 / gridSize;
 
@@ -60,7 +60,9 @@ export const Grid = ({ boards = [] }) => {
 
       {/* Circle in the center */}
 
-      <For each={pieces}>{(piece, i) => <Piece x={piece.x} y={piece.y} />}</For>
+      <For each={pieces}>
+        {(piece, i) => <Piece x={piece.x} y={piece.y} owner={piece.owner} />}
+      </For>
     </svg>
   );
 };
