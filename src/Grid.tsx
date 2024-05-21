@@ -1,5 +1,5 @@
 import { Crown } from "./icons/Crown";
-
+import { Piece } from "./Piece"
 export const Grid = () => {
   const gridSize = 9;
   const gridUnit = 900 / gridSize;
@@ -51,8 +51,7 @@ export const Grid = () => {
 
       {/* Circle in the center */}
       <circle cx="450" cy="450" r="50" fill="red" />
-      {/* Circle in the top right */}
-      <circle cx="650" cy="50" r="50" fill="black" />
+      <Piece x="650" y="50" />
 
       {/* Rectangle in the bottom right corner */}
       <rect x="280" y="280" width="50" height="50" fill="blue" />
