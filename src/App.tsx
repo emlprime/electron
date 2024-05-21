@@ -6,6 +6,7 @@ import { useAuth, useFirebaseApp, useFirestore } from "solid-firebase";
 import { fetchGames } from "./fetchGames";
 import logo from "./logo.svg";
 import styles from "./App.module.css";
+import {Grid} from "./Grid"
 
 function Login() {
   const app = useFirebaseApp();
@@ -52,6 +53,7 @@ const App: Component = () => {
           </div>
         ))}
       </div>
+      <Grid />
     </section>
   );
 };
